@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block header %}
+<link rel='stylesheet' type="text/css" href="{% static 'style.css' %}">
+{% endblock header %}
+
+{% block content %}
+
+<div class='container'>
+  {% for item in object_list %}
+  <div class="card">
+      <h5 class="card-header">{{ item.title }}</h5>
+      <div class="card-body">
+        <h5 class="card-title">投稿者：{{ item.author }}</h5>
+        <h5 class="card-title">レビューが参考になった人：{{ item.useful_review }}人</h5>
+        <a href="{% url 'detail' item.pk %}" class="btn btn-primary">詳しく見る</a>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock content %}
